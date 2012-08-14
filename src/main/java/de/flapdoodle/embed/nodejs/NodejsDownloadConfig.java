@@ -25,6 +25,7 @@ import java.util.regex.Pattern;
 import de.flapdoodle.embed.process.config.store.ArtifactStoreInUserHome;
 import de.flapdoodle.embed.process.config.store.IArtifactStoragePathNaming;
 import de.flapdoodle.embed.process.config.store.IDownloadConfig;
+import de.flapdoodle.embed.process.config.store.IPackageResolver;
 import de.flapdoodle.embed.process.distribution.ArchiveType;
 import de.flapdoodle.embed.process.distribution.Distribution;
 import de.flapdoodle.embed.process.extract.ITempNaming;
@@ -67,16 +68,6 @@ public class NodejsDownloadConfig implements IDownloadConfig {
 	}
 
 	@Override
-	public String getPath(Distribution distribution) {
-		return NodejsPaths.getPath(distribution);
-	}
-
-	@Override
-	public ArchiveType getArchiveType(Distribution distribution) {
-		return NodejsPaths.getArchiveType(distribution);
-	}
-
-	@Override
 	public String getDownloadPrefix() {
 		return downloadPrefix;
 	}
@@ -87,11 +78,8 @@ public class NodejsDownloadConfig implements IDownloadConfig {
 	}
 
 	@Override
-	public String executableFilename(Distribution distribution) {
-		return NodejsPaths.getExecutable(distribution);
+	public IPackageResolver getPackageResolver() {
+		return new NodejsPaths();
 	}
 
-	public Pattern executeablePattern(Distribution distribution) {
-		return NodejsPaths.getExecutablePattern(distribution);
-	};
 }
