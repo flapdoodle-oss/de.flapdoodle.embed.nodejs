@@ -11,7 +11,7 @@
     <groupId>de.flapdoodle.embed</groupId>
     <artifactId>de.flapdoodle.embed.nodejs</artifactId>
     <name>Flapdoodle Embedded node.js</name>
-    <version>1.20</version>
+    <version>1.21-SNAPSHOT</version>
 
     <description>A embedded node.js ...</description>
     <url>http://github.com/flapdoodle-oss/de.flapdoodle.embed.nodejs</url>
