@@ -40,7 +40,7 @@ public class NodejsDownloadConfig implements IDownloadConfig {
 	private String downloadPath = "http://nodejs.org/dist/";
 
 	private IProgressListener progressListener = new StandardConsoleProgressListener();
-	private IArtifactStoragePathNaming artifactStorePath = new ArtifactStoreInUserHome(".nodejs");
+	private IArtifactStoragePathNaming artifactStorePathNaming = new ArtifactStoreInUserHome(".nodejs");
 
 	private String downloadPrefix = "nodejs-download";
 
@@ -61,11 +61,11 @@ public class NodejsDownloadConfig implements IDownloadConfig {
 
 	@Override
 	public IArtifactStoragePathNaming getArtifactStorePathNaming() {
-		return artifactStorePath;
+		return artifactStorePathNaming;
 	}
 
-	public void getArtifactStorePathNaming(IArtifactStoragePathNaming artifactStorePath) {
-		this.artifactStorePath = artifactStorePath;
+	public void setArtifactStorePathNaming(IArtifactStoragePathNaming artifactStorePath) {
+		this.artifactStorePathNaming = artifactStorePath;
 	}
 
 	@Override
