@@ -22,6 +22,8 @@ package de.flapdoodle.embed.nodejs;
 
 import java.io.IOException;
 
+import com.google.common.collect.Lists;
+
 import de.flapdoodle.embed.process.distribution.IVersion;
 
 public class Nodejs {
@@ -39,7 +41,7 @@ public class Nodejs {
 	public static void call(IVersion version, NodejsRuntimeConfig runtimeConfig, String filename, String workingDirectory)
 			throws IOException {
 		NodejsProcess node = null;
-		NodejsConfig nodejsConfig = new NodejsConfig(version, filename, workingDirectory);
+		NodejsConfig nodejsConfig = new NodejsConfig(version, filename, Lists.<String>newArrayList(), workingDirectory);
 		NodejsStarter runtime = new NodejsStarter(runtimeConfig);
 
 		try {

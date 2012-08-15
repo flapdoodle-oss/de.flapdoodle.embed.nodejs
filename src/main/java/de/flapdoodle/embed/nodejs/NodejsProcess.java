@@ -22,6 +22,7 @@ package de.flapdoodle.embed.nodejs;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.common.collect.Lists;
@@ -49,7 +50,11 @@ public class NodejsProcess extends AbstractProcess<NodejsConfig, NodejsExecutabl
 	
 	@Override
 	protected List<String> getCommandLine(Distribution distribution, NodejsConfig config, File exe) throws IOException {
-		return Lists.newArrayList(exe.getAbsolutePath(),config.getFilename());
+		List<String> commandLine = Lists.newArrayList();
+		commandLine.add(exe.getAbsolutePath());
+		commandLine.add(config.getFilename());
+		commandLine.addAll(config.getParameters());
+		return commandLine;
 	}
 	
 	@Override

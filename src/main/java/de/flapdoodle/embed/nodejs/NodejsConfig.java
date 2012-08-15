@@ -20,6 +20,11 @@
  */
 package de.flapdoodle.embed.nodejs;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
 import de.flapdoodle.embed.process.config.ExecutableProcessConfig;
 import de.flapdoodle.embed.process.distribution.IVersion;
 
@@ -27,11 +32,13 @@ public class NodejsConfig extends ExecutableProcessConfig {
 
 	private String _filename;
 	private String _workingDirectory;
+	private List<String> _parameters;
 
-	public NodejsConfig(IVersion version, String filename, String workingDirectory) {
+	public NodejsConfig(IVersion version, String filename, List<String> parameters, String workingDirectory) {
 		super(version);
 		_filename = filename;
 		_workingDirectory = workingDirectory;
+		_parameters = Lists.newArrayList(parameters);
 	}
 
 	public String getFilename() {
@@ -40,5 +47,9 @@ public class NodejsConfig extends ExecutableProcessConfig {
 
 	public String getWorkingDirectory() {
 		return _workingDirectory;
+	}
+
+	public List<String> getParameters() {
+		return Lists.newArrayList(_parameters);
 	}
 }
