@@ -21,7 +21,7 @@ Stable (Maven Central Repository, Released: 14.08.2012 - wait 24hrs for maven ce
 	<dependency>
 		<groupId>de.flapdoodle.embed</groupId>
 		<artifactId>de.flapdoodle.embed.nodejs</artifactId>
-		<version>1.20</version>
+		<version>1.21</version>
 	</dependency>
 
 Snapshots (Repository http://oss.sonatype.org/content/repositories/snapshots)
@@ -29,7 +29,7 @@ Snapshots (Repository http://oss.sonatype.org/content/repositories/snapshots)
 	<dependency>
 		<groupId>de.flapdoodle.embed</groupId>
 		<artifactId>de.flapdoodle.embed.nodejs</artifactId>
-		<version>1.21-SNAPSHOT</version>
+		<version>1.22-SNAPSHOT</version>
 	</dependency>
 
 ### Changelog
