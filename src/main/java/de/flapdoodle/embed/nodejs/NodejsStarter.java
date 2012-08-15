@@ -29,7 +29,7 @@ import de.flapdoodle.embed.process.runtime.Starter;
 
 public class NodejsStarter extends Starter<NodejsConfig, NodejsExecutable, NodejsProcess>{
 
-	protected NodejsStarter(IRuntimeConfig config) {
+	public NodejsStarter(IRuntimeConfig config) {
 		super(config);
 	}
 

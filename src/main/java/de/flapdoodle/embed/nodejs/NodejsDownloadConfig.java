@@ -47,6 +47,8 @@ public class NodejsDownloadConfig implements IDownloadConfig {
 	private String userAgent = "Mozilla/5.0 (compatible; "
 			+ "Embedded node.js; +https://github.com/flapdoodle-oss/embedmongo.flapdoodle.de)"; // change to embednodejs
 
+	private NodejsPaths _packageResolver = new NodejsPaths();
+
 	@Override
 	public String getDownloadPath() {
 		return downloadPath;
@@ -60,6 +62,10 @@ public class NodejsDownloadConfig implements IDownloadConfig {
 	@Override
 	public IArtifactStoragePathNaming getArtifactStorePathNaming() {
 		return artifactStorePath;
+	}
+
+	public void getArtifactStorePathNaming(IArtifactStoragePathNaming artifactStorePath) {
+		this.artifactStorePath = artifactStorePath;
 	}
 
 	@Override
@@ -79,7 +85,31 @@ public class NodejsDownloadConfig implements IDownloadConfig {
 
 	@Override
 	public IPackageResolver getPackageResolver() {
-		return new NodejsPaths();
+		return _packageResolver;
+	}
+	
+	public void setPackageResolver(NodejsPaths packageResolver) {
+		_packageResolver = packageResolver;
+	}
+
+	public void setFileNaming(ITempNaming fileNaming) {
+		this.fileNaming = fileNaming;
+	}
+
+	public void setDownloadPath(String downloadPath) {
+		this.downloadPath = downloadPath;
+	}
+
+	public void setProgressListener(IProgressListener progressListener) {
+		this.progressListener = progressListener;
+	}
+
+	public void setDownloadPrefix(String downloadPrefix) {
+		this.downloadPrefix = downloadPrefix;
+	}
+
+	public void setUserAgent(String userAgent) {
+		this.userAgent = userAgent;
 	}
 
 }
