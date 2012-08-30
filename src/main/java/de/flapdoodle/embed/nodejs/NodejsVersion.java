@@ -23,7 +23,10 @@ package de.flapdoodle.embed.nodejs;
 import de.flapdoodle.embed.process.distribution.IVersion;
 
 public enum NodejsVersion implements IVersion {
-	V0_8_6("v0.8.6"), ;
+	V0_8_6("v0.8.6"),
+	V0_8_8("v0.8.8"),
+	V0_9_1_DEV("v0.9.1"),
+	;
 
 	private String version;
 
@@ -36,4 +39,20 @@ public enum NodejsVersion implements IVersion {
 		return version;
 	}
 
+	public static enum Main implements IVersion {
+		V0_8(V0_8_8),
+		V0_9_DEV(V0_9_1_DEV),
+		;
+		private final NodejsVersion _latest;
+
+		Main(NodejsVersion latest) {
+			_latest = latest;
+		}
+
+		@Override
+		public String asInDownloadPath() {
+			return _latest.asInDownloadPath();
+		}
+
+	}
 }

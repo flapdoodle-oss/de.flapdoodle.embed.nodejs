@@ -38,6 +38,8 @@ Initial Version starts with 1.19 SNAPSHOT as extract from Embedded MongoDB Proje
 
 #### 1.23 (SNAPSHOT)
 
+- added v0.8.8, v0.9.1 (Unstable)
+
 #### 1.22
 
 #### 1.21
