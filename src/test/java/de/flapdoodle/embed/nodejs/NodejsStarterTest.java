@@ -32,7 +32,7 @@ public class NodejsStarterTest extends TestCase {
 		final File helloWorld = Files.createTempFile("node-hello-world.js");
 		Files.write("console.log(\"Running Hello World inside NodeJS in \"+process.cwd());setTimeout(function(){},1000);", helloWorld);
 		try {
-			Nodejs.call(NodejsVersion.V0_8_6, helloWorld.getAbsolutePath(), System.getProperty("java.io.tmpdir"));
+			Nodejs.call(NodejsVersion.Main.V0_8, helloWorld.getAbsolutePath(), System.getProperty("java.io.tmpdir"));
 		} finally {
 			Files.forceDelete(helloWorld);
 		}

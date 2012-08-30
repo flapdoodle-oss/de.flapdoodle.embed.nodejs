@@ -65,6 +65,17 @@ Support for Linux, Windows and MacOSX.
 
 ### Usage
 
- NOT DOCUMENTED
+#### Running javascript from junit test with node.js
+
+	public void testNodejs() throws IOException, InterruptedException {
+		final File helloWorld = Files.createTempFile("node-hello-world.js");
+		Files.write("console.log(\"Running Hello World inside NodeJS in \"+process.cwd());setTimeout(function(){},1000);", helloWorld);
+		try {
+			Nodejs.call(NodejsVersion.Main.V0_8, helloWorld.getAbsolutePath(), System.getProperty("java.io.tmpdir"));
+		} finally {
+			Files.forceDelete(helloWorld);
+		}
+	}
+
 
 
