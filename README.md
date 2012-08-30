@@ -16,12 +16,12 @@ Embedded node.js will provide a platform neutral way for running node binary in 
 
 ### Maven
 
-Stable (Maven Central Repository, Released: 16.08.2012 - wait 24hrs for [maven central](http://repo1.maven.org/maven2/de/flapdoodle/embed/de.flapdoodle.embed.nodejs/maven-metadata.xml))
+Stable (Maven Central Repository, Released: 30.08.2012 - wait 24hrs for [maven central](http://repo1.maven.org/maven2/de/flapdoodle/embed/de.flapdoodle.embed.nodejs/maven-metadata.xml))
 
 	<dependency>
 		<groupId>de.flapdoodle.embed</groupId>
 		<artifactId>de.flapdoodle.embed.nodejs</artifactId>
-		<version>1.22</version>
+		<version>1.23</version>
 	</dependency>
 
 Snapshots (Repository http://oss.sonatype.org/content/repositories/snapshots)
@@ -29,14 +29,16 @@ Snapshots (Repository http://oss.sonatype.org/content/repositories/snapshots)
 	<dependency>
 		<groupId>de.flapdoodle.embed</groupId>
 		<artifactId>de.flapdoodle.embed.nodejs</artifactId>
-		<version>1.23-SNAPSHOT</version>
+		<version>1.24-SNAPSHOT</version>
 	</dependency>
 
 ### Changelog
 
 Initial Version starts with 1.19 SNAPSHOT as extract from Embedded MongoDB Project
 
-#### 1.23 (SNAPSHOT)
+#### 1.24 (SNAPSHOT)
+
+#### 1.23
 
 - added v0.8.8, v0.9.1 (Unstable)
 
