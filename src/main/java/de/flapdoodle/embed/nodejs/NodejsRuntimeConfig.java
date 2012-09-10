@@ -25,11 +25,14 @@ import de.flapdoodle.embed.process.config.io.ProcessOutput;
 import de.flapdoodle.embed.process.config.store.IDownloadConfig;
 import de.flapdoodle.embed.process.extract.ITempNaming;
 import de.flapdoodle.embed.process.extract.UUIDTempNaming;
+import de.flapdoodle.embed.process.io.directories.IDirectory;
+import de.flapdoodle.embed.process.io.directories.PropertyOrPlatformTempDir;
 import de.flapdoodle.embed.process.runtime.ICommandLinePostProcessor;
 
 
 public class NodejsRuntimeConfig implements IRuntimeConfig {
 
+	private IDirectory directory=new PropertyOrPlatformTempDir();
 	private ITempNaming defaultfileNaming = new UUIDTempNaming();
 	private ITempNaming executableNaming = defaultfileNaming;
 	private ProcessOutput processOutput = ProcessOutput.getDefaultInstance("nodejs");
@@ -39,6 +42,11 @@ public class NodejsRuntimeConfig implements IRuntimeConfig {
 	@Override
 	public IDownloadConfig getDownloadConfig() {
 		return downloadConfig;
+	}
+
+	@Override
+	public IDirectory getTempDirFactory() {
+		return directory;
 	}
 
 	@Override

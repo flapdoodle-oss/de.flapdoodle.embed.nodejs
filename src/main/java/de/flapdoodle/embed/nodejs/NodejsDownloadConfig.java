@@ -20,16 +20,12 @@
  */
 package de.flapdoodle.embed.nodejs;
 
-import java.util.regex.Pattern;
-
-import de.flapdoodle.embed.process.config.store.ArtifactStoreInUserHome;
-import de.flapdoodle.embed.process.config.store.IArtifactStoragePathNaming;
 import de.flapdoodle.embed.process.config.store.IDownloadConfig;
 import de.flapdoodle.embed.process.config.store.IPackageResolver;
-import de.flapdoodle.embed.process.distribution.ArchiveType;
-import de.flapdoodle.embed.process.distribution.Distribution;
 import de.flapdoodle.embed.process.extract.ITempNaming;
 import de.flapdoodle.embed.process.extract.UUIDTempNaming;
+import de.flapdoodle.embed.process.io.directories.IDirectory;
+import de.flapdoodle.embed.process.io.directories.UserHome;
 import de.flapdoodle.embed.process.io.progress.IProgressListener;
 import de.flapdoodle.embed.process.io.progress.StandardConsoleProgressListener;
 
@@ -40,7 +36,7 @@ public class NodejsDownloadConfig implements IDownloadConfig {
 	private String downloadPath = "http://nodejs.org/dist/";
 
 	private IProgressListener progressListener = new StandardConsoleProgressListener();
-	private IArtifactStoragePathNaming artifactStorePathNaming = new ArtifactStoreInUserHome(".nodejs");
+	private IDirectory artifactStorePathNaming = new UserHome(".nodejs");
 
 	private String downloadPrefix = "nodejs-download";
 
@@ -60,11 +56,11 @@ public class NodejsDownloadConfig implements IDownloadConfig {
 	}
 
 	@Override
-	public IArtifactStoragePathNaming getArtifactStorePathNaming() {
+	public IDirectory getArtifactStorePath() {
 		return artifactStorePathNaming;
 	}
 
-	public void setArtifactStorePathNaming(IArtifactStoragePathNaming artifactStorePath) {
+	public void setArtifactStorePathNaming(IDirectory artifactStorePath) {
 		this.artifactStorePathNaming = artifactStorePath;
 	}
 
