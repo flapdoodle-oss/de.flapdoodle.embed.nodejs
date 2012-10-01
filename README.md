@@ -21,7 +21,7 @@ Stable (Maven Central Repository, Released: 12.09.2012 - wait 24hrs for [maven c
 	<dependency>
 		<groupId>de.flapdoodle.embed</groupId>
 		<artifactId>de.flapdoodle.embed.nodejs</artifactId>
-		<version>1.25</version>
+		<version>1.26</version>
 	</dependency>
 
 Snapshots (Repository http://oss.sonatype.org/content/repositories/snapshots)
@@ -29,14 +29,18 @@ Snapshots (Repository http://oss.sonatype.org/content/repositories/snapshots)
 	<dependency>
 		<groupId>de.flapdoodle.embed</groupId>
 		<artifactId>de.flapdoodle.embed.nodejs</artifactId>
-		<version>1.26-SNAPSHOT</version>
+		<version>1.27-SNAPSHOT</version>
 	</dependency>
 
 ### Changelog
 
 Initial Version starts with 1.19 SNAPSHOT as extract from Embedded MongoDB Project
 
-#### 1.26 (SNAPSHOT)
+#### 1.27 (SNAPSHOT)
+
+#### 1.26
+
+- dep version change
 
 #### 1.25
 
