@@ -24,7 +24,6 @@ import java.io.File;
 import java.io.IOException;
 
 import junit.framework.TestCase;
-import de.flapdoodle.embed.process.io.directories.PlatformTempDir;
 import de.flapdoodle.embed.process.io.directories.PropertyOrPlatformTempDir;
 import de.flapdoodle.embed.process.io.file.Files;
 
