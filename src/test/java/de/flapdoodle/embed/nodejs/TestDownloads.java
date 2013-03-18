@@ -1,17 +1,17 @@
 /**
  * Copyright (C) 2011
- *   Michael Mosmann <michael@mosmann.de>
- *   Martin Jöhren <m.joehren@googlemail.com>
- *
+ * Michael Mosmann <michael@mosmann.de>
+ * Martin Jöhren <m.joehren@googlemail.com>
+ * 
  * with contributions from
- * 	konstantin-ba@github,Archimedes Trajano (trajano@github)
- *
+ * konstantin-ba@github,Archimedes Trajano (trajano@github)
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *         http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -20,32 +20,28 @@
  */
 package de.flapdoodle.embed.nodejs;
 
-import java.io.File;
 import java.io.IOException;
 
 import junit.framework.TestCase;
+
+import org.junit.Assert;
 
 import de.flapdoodle.embed.process.distribution.BitSize;
 import de.flapdoodle.embed.process.distribution.Distribution;
 import de.flapdoodle.embed.process.distribution.IVersion;
 import de.flapdoodle.embed.process.distribution.Platform;
-import de.flapdoodle.embed.process.store.Downloader;
-import de.flapdoodle.embed.process.store.LocalArtifactStore;
+import de.flapdoodle.embed.process.store.IArtifactStore;
 
 public class TestDownloads extends TestCase {
 
 	public void testDownloads() throws IOException {
-		NodejsDownloadConfig downloadConfig = new NodejsDownloadConfig();
+		IArtifactStore artifactStore = new ArtifactStoreBuilder().defaults().build();
 
 		for (Platform p : Platform.values()) {
 			for (BitSize b : BitSize.values()) {
 				for (IVersion version : NodejsVersion.Main.values()) {
 					Distribution distribution = new Distribution(version, p, b);
-					if (!LocalArtifactStore.checkArtifact(downloadConfig, distribution)) {
-						File artifact = Downloader.download(downloadConfig, distribution);
-						assertNotNull("" + distribution, artifact);
-						LocalArtifactStore.store(downloadConfig, distribution, artifact);
-					}
+					Assert.assertTrue("Distribution: " + distribution, artifactStore.checkDistribution(distribution));
 				}
 			}
 		}
