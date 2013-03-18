@@ -38,6 +38,8 @@ Initial Version starts with 1.19 SNAPSHOT as extract from Embedded MongoDB Proje
 
 #### 1.27 (SNAPSHOT)
 
+- api change upgrade (de.flapdoodle.embed.process api change)
+- added support for nodejs 0.10.0
 
 #### 1.26
 
