@@ -52,6 +52,9 @@ public class NodejsPaths implements IPackageResolver {
 			case OS_X:
 				archiveType = ArchiveType.TGZ;
 				break;
+			case Solaris:
+				archiveType = ArchiveType.TGZ;
+				break;
 			default:
 				throw new IllegalArgumentException("Unknown Platform " + distribution.getPlatform());
 		}
@@ -90,6 +93,9 @@ public class NodejsPaths implements IPackageResolver {
 			case OS_X:
 				splatform = "-"+sversion+"-darwin";
 				break;
+			case Solaris:
+				splatform = "-"+sversion+"-sunos";
+				break;
 			default:
 				throw new IllegalArgumentException("Unknown Platform " + distribution.getPlatform());
 		}
@@ -113,6 +119,7 @@ public class NodejsPaths implements IPackageResolver {
 				break;
 			case B64:
 				switch (distribution.getPlatform()) {
+					case Solaris:
 					case Linux:
 						sbitSize = "-x64";
 						break;
