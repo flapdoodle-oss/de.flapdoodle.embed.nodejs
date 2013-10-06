@@ -25,13 +25,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.common.collect.Lists;
-
 import de.flapdoodle.embed.process.config.IRuntimeConfig;
 import de.flapdoodle.embed.process.config.ISupportConfig;
 import de.flapdoodle.embed.process.distribution.Distribution;
+import de.flapdoodle.embed.process.extract.IExtractedFileSet;
 import de.flapdoodle.embed.process.runtime.AbstractProcess;
-import de.flapdoodle.embed.process.runtime.ProcessControl;
 
 
 public class NodejsProcess extends AbstractProcess<NodejsConfig, NodejsExecutable, NodejsProcess> {
@@ -49,9 +47,9 @@ public class NodejsProcess extends AbstractProcess<NodejsConfig, NodejsExecutabl
 	}
 	
 	@Override
-	protected List<String> getCommandLine(Distribution distribution, NodejsConfig config, File exe) throws IOException {
-		List<String> commandLine = Lists.newArrayList();
-		commandLine.add(exe.getAbsolutePath());
+	protected List<String> getCommandLine(Distribution distribution, NodejsConfig config, IExtractedFileSet exe) throws IOException {
+		List<String> commandLine = new ArrayList<String>();
+		commandLine.add(exe.executable().getAbsolutePath());
 		commandLine.add(config.getFilename());
 		commandLine.addAll(config.getParameters());
 		return commandLine;
@@ -63,7 +61,12 @@ public class NodejsProcess extends AbstractProcess<NodejsConfig, NodejsExecutabl
 	}
 
 	@Override
-	public void stop() {
+	protected void stopInternal() {
 		stopProcess();
+	}
+
+	@Override
+	protected void cleanupInternal() {
+		
 	}
 }

@@ -24,6 +24,7 @@ import java.io.File;
 
 import de.flapdoodle.embed.process.config.IRuntimeConfig;
 import de.flapdoodle.embed.process.distribution.Distribution;
+import de.flapdoodle.embed.process.extract.IExtractedFileSet;
 import de.flapdoodle.embed.process.runtime.Starter;
 
 
@@ -35,7 +36,7 @@ public class NodejsStarter extends Starter<NodejsConfig, NodejsExecutable, Nodej
 
 	@Override
 	protected NodejsExecutable newExecutable(NodejsConfig config, Distribution distribution, IRuntimeConfig runtime,
-			File exe) {
+			IExtractedFileSet exe) {
 		return new NodejsExecutable(distribution, config, runtime, exe);
 	}
 }

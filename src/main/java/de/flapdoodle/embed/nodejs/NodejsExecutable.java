@@ -25,12 +25,13 @@ import java.io.IOException;
 
 import de.flapdoodle.embed.process.config.IRuntimeConfig;
 import de.flapdoodle.embed.process.distribution.Distribution;
+import de.flapdoodle.embed.process.extract.IExtractedFileSet;
 import de.flapdoodle.embed.process.runtime.Executable;
 
 
 public class NodejsExecutable extends Executable<NodejsConfig, NodejsProcess>{
 
-	public NodejsExecutable(Distribution distribution, NodejsConfig config, IRuntimeConfig runtimeConfig, File executable) {
+	public NodejsExecutable(Distribution distribution, NodejsConfig config, IRuntimeConfig runtimeConfig, IExtractedFileSet executable) {
 		super(distribution, config, runtimeConfig, executable);
 	}
 

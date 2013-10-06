@@ -28,10 +28,9 @@ import de.flapdoodle.embed.process.runtime.ICommandLinePostProcessor;
 public class NodejsRuntimeConfigBuilder extends RuntimeConfigBuilder {
 
 	public NodejsRuntimeConfigBuilder defaults() {
-		processOutput(ProcessOutput.getDefaultInstance("nodejs"));
-		commandLinePostProcessor(new ICommandLinePostProcessor.Noop());
-		artifactStore(new ArtifactStoreBuilder().defaults());
-		setOverride(true);
+		processOutput().setDefault(ProcessOutput.getDefaultInstance("nodejs"));
+		commandLinePostProcessor().setDefault(new ICommandLinePostProcessor.Noop());
+		artifactStore().setDefault(new ArtifactStoreBuilder().defaults().build());
 		return this;
 	}
 }

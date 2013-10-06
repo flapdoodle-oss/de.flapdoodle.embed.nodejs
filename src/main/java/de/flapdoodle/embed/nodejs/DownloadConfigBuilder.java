@@ -20,6 +20,7 @@
  */
 package de.flapdoodle.embed.nodejs;
 
+import de.flapdoodle.embed.process.config.store.DownloadPath;
 import de.flapdoodle.embed.process.extract.UUIDTempNaming;
 import de.flapdoodle.embed.process.io.directories.UserHome;
 import de.flapdoodle.embed.process.io.progress.StandardConsoleProgressListener;
@@ -28,15 +29,13 @@ import de.flapdoodle.embed.process.io.progress.StandardConsoleProgressListener;
 public class DownloadConfigBuilder extends de.flapdoodle.embed.process.config.store.DownloadConfigBuilder {
 
 	public DownloadConfigBuilder defaults() {
-		fileNaming(new UUIDTempNaming());
-		downloadPath("http://nodejs.org/dist/");
-		progressListener(new StandardConsoleProgressListener());
-		packageResolver(new NodejsPaths());
-		artifactStorePath(new UserHome(".nodejs"));
-		downloadPrefix("nodejs-download");
-		userAgent("Mozilla/5.0 (compatible; Embedded node.js; +https://github.com/flapdoodle-oss/de.flapdoodle.embed.nodejs)");
-		
-		setOverride(true);
+		fileNaming().setDefault(new UUIDTempNaming());
+		downloadPath().setDefault(new DownloadPath("http://nodejs.org/dist/"));
+		progressListener().setDefault(new StandardConsoleProgressListener());
+		packageResolver().setDefault(new NodejsPaths());
+		artifactStorePath().setDefault(new UserHome(".nodejs"));
+		downloadPrefix().setDefault(new DownloadPrefix("nodejs-download"));
+		userAgent().setDefault(new UserAgent("Mozilla/5.0 (compatible; Embedded node.js; +https://github.com/flapdoodle-oss/de.flapdoodle.embed.nodejs)"));
 		return this;
 	}
 

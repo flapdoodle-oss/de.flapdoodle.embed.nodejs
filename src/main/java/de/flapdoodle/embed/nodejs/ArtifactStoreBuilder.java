@@ -26,10 +26,9 @@ import de.flapdoodle.embed.process.io.directories.PropertyOrPlatformTempDir;
 public class ArtifactStoreBuilder extends de.flapdoodle.embed.process.store.ArtifactStoreBuilder {
 
 	public ArtifactStoreBuilder defaults() {
-		tempDir(new PropertyOrPlatformTempDir());
-		executableNaming(new UUIDTempNaming());
-		download(new DownloadConfigBuilder().defaults());
-		setOverride(true);
+		tempDir().setDefault(new PropertyOrPlatformTempDir());
+		executableNaming().setDefault(new UUIDTempNaming());
+		download().setDefault(new DownloadConfigBuilder().defaults().build());
 		return this;
 	}
 }

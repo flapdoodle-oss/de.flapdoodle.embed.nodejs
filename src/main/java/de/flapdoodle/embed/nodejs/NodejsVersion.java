@@ -23,10 +23,15 @@ package de.flapdoodle.embed.nodejs;
 import de.flapdoodle.embed.process.distribution.IVersion;
 
 public enum NodejsVersion implements IVersion {
+	@Deprecated
 	V0_8_6("v0.8.6"),
+	@Deprecated
 	V0_8_8("v0.8.8"),
+	@Deprecated
 	V0_9_1_DEV("v0.9.1"),
+	@Deprecated
 	V0_10_0("v0.10.0"),
+	V0_10_20("v0.10.20"),
 	;
 
 	private String version;
@@ -41,9 +46,11 @@ public enum NodejsVersion implements IVersion {
 	}
 
 	public static enum Main implements IVersion {
+		@Deprecated
 		V0_8(V0_8_8),
+		@Deprecated
 		V0_9_DEV(V0_9_1_DEV),
-		V0_10(V0_10_0),
+		V0_10(V0_10_20),
 		;
 		private final NodejsVersion _latest;
 

@@ -20,6 +20,8 @@
  */
 package de.flapdoodle.embed.nodejs;
 
+import de.flapdoodle.embed.process.config.store.FileSet;
+import de.flapdoodle.embed.process.config.store.FileType;
 import de.flapdoodle.embed.process.config.store.IPackageResolver;
 import de.flapdoodle.embed.process.distribution.ArchiveType;
 import de.flapdoodle.embed.process.distribution.Distribution;
@@ -28,37 +30,14 @@ import de.flapdoodle.embed.process.distribution.IVersion;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
+import com.sun.corba.se.spi.legacy.connection.GetEndPointInfoAgainException;
+
 /**
  *
  */
 public class NodejsPaths implements IPackageResolver {
 
 	private static Logger logger = Logger.getLogger(NodejsPaths.class.getName());
-
-	@Override
-	public Pattern executeablePattern(Distribution distribution) {
-		return Pattern.compile(".*" + executableFilename(distribution));
-	}
-
-	//CHECKSTYLE:OFF
-	@Override
-	public String executableFilename(Distribution distribution) {
-		String mongodPattern;
-		switch (distribution.getPlatform()) {
-			case Linux:
-				mongodPattern = "node";
-				break;
-			case Windows:
-				mongodPattern = "node.exe";
-				break;
-			case OS_X:
-				mongodPattern = "node";
-				break;
-			default:
-				throw new IllegalArgumentException("Unknown Platform " + distribution.getPlatform());
-		}
-		return mongodPattern;
-	}
 
 	@Override
 	public ArchiveType getArchiveType(Distribution distribution) {
@@ -157,6 +136,26 @@ public class NodejsPaths implements IPackageResolver {
 
 	protected static String getVersionPart(IVersion version) {
 		return version.asInDownloadPath();
+	}
+
+	@Override
+	public FileSet getFileSet(Distribution distribution) {
+		String mongodPattern;
+		switch (distribution.getPlatform()) {
+			case Linux:
+				mongodPattern = "node";
+				break;
+			case Windows:
+				mongodPattern = "node.exe";
+				break;
+			case OS_X:
+				mongodPattern = "node";
+				break;
+			default:
+				throw new IllegalArgumentException("Unknown Platform " + distribution.getPlatform());
+		}
+		String executableFilename = mongodPattern;
+		return FileSet.builder().addEntry(FileType.Executable, executableFilename).build();
 	}
 
 }
