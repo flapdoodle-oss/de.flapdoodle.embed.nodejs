@@ -104,6 +104,7 @@ public class NodejsPaths implements IPackageResolver {
 		switch (distribution.getBitsize()) {
 			case B32:
 				switch (distribution.getPlatform()) {
+					case Solaris:
 					case Linux:
 						sbitSize = "-x86";
 						break;
